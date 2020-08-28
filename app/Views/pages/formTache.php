@@ -11,29 +11,30 @@
       <div class="row">
       <div class="container">
       <?= \Config\Services::validation()->listErrors(); ?>
-      <form action="<?php echo base_url('client/validateClient'); ?>" method="post"> 
+      <form action="<?php echo base_url('taches/insnewtache'); ?>" method="post"> 
  
   <div class="form-row">
     <div class="form-group col-md-6">
-      <input type="text" name="nom" class="form-control" placeholder="Nom" >
+      <input type="text" name="id" class="form-control" placeholder="Selection client" >
     </div>
     <div class="form-group col-md-6">
-      <input type="text" name="prenom" class="form-control" placeholder="Prénom" >
+      <input type="date" name="date" class="form-control" placeholder="Entrer la date" >
     </div>
   </div>
 
   <div class="form-group">
-    <input type="email" name="email" class="form-control" placeholder="E-mail" >
+    <input type="text" name="description" class="form-control" placeholder="Entrer la déscription" >
   </div>
 
   <div class="form-row">
     <div class="col-md-6 mb-3">
-      <input type="text" name="telephone" class="form-control" placeholder="Télephone" >
+      <input type="time" name="dure" class="form-control" placeholder="entret la durée du travail" >
     </div>
     <div class="col-md-6 mb-3">
-      <select class="form-control" name="sexe" >
-         <option value="Homme">Homme</option>
-         <option value="Femme">Femme</option>
+      <select class="form-control" name="statut" >
+         <option value="FAIT">Fait</option>
+         <option value="EN COURS">En cours</option>
+         <option value="EN ATTENTE">  En attente</option>
       
        </select>
     </div>
@@ -41,34 +42,15 @@
 
   <div class="form-row">
     <div class="col-5">
-      <input type="text" name="adresse" class="form-control" placeholder="Adresse" >
-    </div>
-    <div class="col">
-      <input type="date" name="date" class="form-control" placeholder="date de naissance" required>
-    </div>
-    <div class="col">
-      <input type="number" name="cp" class="form-control" placeholder="Code postal" min="1000" max="9999" required>
+      <input type="number" name="prix" class="form-control" placeholder="Montant" >
     </div>
   </div>
-  
-  <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <label for="validationDefault01"></label>
-      <input type="text" name="ville" class="form-control" placeholder="Ville" required>
-    </div>
-    <div class="col-md-6 mb-3">
-      <label for="validationDefault02"></label>
-      <select class="form-control" placeholder="Ville" name="langue" placeholder="langue" required>
-         <option value="Néerlandais">Néerlandais</option>
-         <option value="Français">Français</option>
-         <option value="Allemand">Allemand</option>
-       </select>
-    </div>
-  </div>
+
   <div class="form-group">
-  <textarea rows="6" cols="170" name="commentaire" type="text">
-  </textarea>
+  <textarea rows="6" cols="170" name="commentaire" type="text">  </textarea>
   </div>
+
+  
   <button class="btn btn-primary btn-lg btn-block">Valider Nouveau client</button> 
 </form>
 </div>

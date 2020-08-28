@@ -42,6 +42,7 @@ $routes->get('/', 'Taches::index');
 $routes->get('deleteTache','Taches::deleteTache/{id}');
 $routes->get('update', 'Taches::update/{id}');
 $routes->get('newtache','Taches::newtache');
+$routes->get('insnewtache','Taches::insnewtache');
 
 
 $routes->get('/', 'Client::index');
