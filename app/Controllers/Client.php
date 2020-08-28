@@ -64,12 +64,96 @@ class Client extends BaseController
                     return redirect()->to(site_url('client/index'));
                 }
         
-    }
+        }
    }
    public function deleteClient($id=null)
     {
         $model =  new ClientM();
         $model->delete($id);
         return redirect()->to(base_url()."/client/index");
+    }
+    public function update( $idClient = null )
+    {
+       if(!empty($idClient)){
+        $client =  new ClientM();
+        $result= $client->where('id',$idClient)->findAll();
+        if (count($result)>0) {
+            $data['client'] = $result;
+            echo view('templates/header');
+            echo view('pages/formUpdate',$data);
+            echo view('templates/footer');
+        }
+        else {
+            echo " NO";
+        }
+
+       }
+       else {
+           echo " Probleme id pas disponible";
+       }
+
+    }
+    public function updateClient() 
+    {
+            $val= $this->validate([
+                'nom'=>'required|min_length[5]',
+                'prenom'=>'required|min_length[5]',
+                'email'=>'required|valid_email[clients.email]',
+                'telephone'=>'required|min_length[5]|max_length[10]',
+                'adresse'=>'required',
+                'date'=>'required',
+                'cp'=>'required',
+                'ville'=>'required|min_length[5]',
+                'langue'=>'required',
+                
+            ]);
+            if (!$val) 
+            {
+                $this->newClient();
+            }
+        
+            else {
+                $request = \Config\Services::request();
+                $client =  new ClientM();
+                helper('text');
+                $id = $request->getPost('id');
+                $nom = $request->getPost('nom');
+                $prenom = $request->getPost('prenom');
+                $date = $request->getPost('date');
+                $sexe = $request->getPost('sexe');
+                $email = $request->getPost('email');
+                $adresse = $request->getPost('adresse');
+        
+                $langue = $request->getPost('langue');
+                $telephone = $request->getPost('telephone');
+                $ville = $request->getPost('ville');
+                $code_postal = $request->getPost('cp'); 
+                $commentaire = $request->getPost('commentaire');
+                $updateClient = [
+                    'nom'=> $nom,
+                    'prenom'=> $prenom,
+                    'date'=> $date,
+                    'sexe'=> $sexe,
+                    'email'=> $email,
+                    'adresse'=> $adresse,
+                    'langue'=> $langue,
+                    'code_postal'=> $code_postal,
+                    'ville'=> $ville,
+                    'commentaire'=> $commentaire,
+                    'telephone'=> $telephone,
+                ];
+                
+                $request = \Config\Services::request();
+                $client =  new ClientM();
+
+                $resultat = $client->update($id,$updateClient);
+                if ($resultat) {
+                    echo " bien vue";
+                }
+                else {
+                    echo "NO";
+                }
+            }
+            return redirect()->to(site_url('client/index'));
     }
 }
