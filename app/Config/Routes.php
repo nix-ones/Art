@@ -40,6 +40,7 @@ $routes->get('/', 'Users::index');
 
 $routes->get('/', 'Taches::index');
 $routes->get('deleteTache','Taches::deleteTache/{id}');
+$routes->get('update', 'Taches::update/{id}');
 $routes->get('newtache','Taches::newtache');
 
 
@@ -47,6 +48,9 @@ $routes->get('/', 'Client::index');
 $routes->get('newClient','Client::newClient');
 $routes->get('validateClient','Client::validateClient');
 $routes->get('deleteClient', 'Client::deleteClient/{id}'); 
+$routes->get('update', 'Client::update/{id}'); 
+$routes->get('updateClient', 'Client::updateClient'); 
+
 
 /**
  * --------------------------------------------------------------------

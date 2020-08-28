@@ -47,7 +47,7 @@
                     <td>
                         
                         <a class="btn btn-danger" href="<?php echo base_url('client/deleteClient/'.$client->id)?>"> <i class="fa fa-trash-alt"></i></a>
-                        <a class="btn btn-warning" href="<?php echo base_url('client/updateForm/'.$client->id)?>"> <i class="far fa-edit"></i></a>
+                        <a class="btn btn-warning" href="<?php echo base_url('client/update/'.$client->id)?>"> <i class="far fa-edit"></i></a>
                         
                     </td>
                </tr>            

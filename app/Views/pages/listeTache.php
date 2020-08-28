@@ -40,6 +40,7 @@
                     <td><?php echo $tache->commentaire; ?></td>
                     <td>
                     <a class="btn btn-danger" href="<?php echo base_url('taches/deleteTache/'.$tache->id)?>"> <i class="fa fa-trash-alt"></i></a>
+                    <a class="btn btn-warning" href="<?php echo base_url('taches/update/'.$tache->id)?>"> <i class="fas fa-edit"></i></a>
                 </td>
                </tr>            
             <?php endforeach;?>

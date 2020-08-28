@@ -25,6 +25,9 @@ class Taches extends BaseController
         echo view('pages/formTache');
 		echo view('templates/footer');
     }
-
+    public function update($id=null)
+    {
+        echo $id;
+    }
     
 }
