@@ -28,7 +28,7 @@
 
   <div class="form-row">
     <div class="col-md-6 mb-3">
-      <input type="time" name="dure" class="form-control" placeholder="entret la durée du travail" >
+      <input type="text" name="dure" class="form-control" placeholder="Entre le minute" >
     </div>
     <div class="col-md-6 mb-3">
       <select class="form-control" name="statut" >
@@ -51,7 +51,7 @@
   </div>
 
   
-  <button class="btn btn-primary btn-lg btn-block">Valider Nouveau client</button> 
+  <button class="btn btn-primary btn-lg btn-block">Valider Nouvelle tâche</button> 
 </form>
 </div>
 </div>
