@@ -87,7 +87,7 @@ class Taches extends BaseController
             }    
         }   
      }
-     public function mofierTache()
+     public function modifierTache()
      {
         $val= $this->validate([
            

@@ -11,7 +11,7 @@
       <div class="row">
       <div class="container">
       <?= \Config\Services::validation()->listErrors(); ?>
-      <form action="<?php echo base_url('taches/mofierTache'); ?>" method="post"> 
+      <form action="<?php echo base_url('taches/modifierTache'); ?>" method="post"> 
  
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -28,14 +28,13 @@
 
   <div class="form-row">
     <div class="col-md-6 mb-3">
-      <input type="text" name="dure" class="form-control" placeholder="entret la durée du travail" value="<?php echo $tache[0]['dure']?>">
+      <input type="text" name="dure" class="form-control" placeholder="Combien de munite" value="<?php echo $tache[0]['dure']?>">
     </div>
     <div class="col-md-6 mb-3">
       <select class="form-control" name="statut" >
          <option value="FAIT">Fait</option>
-         <option value="EN COURS">En cours</option>
-         <option value="EN ATTENTE">  En attente</option>
-      
+         <option value="EN COURS">En cours</option> 
+         <option value="EN ATTENTE">  En attente</option>      
        </select>
     </div>
   </div>

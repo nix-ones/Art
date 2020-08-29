@@ -51,7 +51,7 @@
   </div>
 
   
-  <button class="btn btn-primary btn-lg btn-block">Valider Nouveau client</button> 
+  <button class="btn btn-primary btn-lg btn-block">Valider Nouvelle tâche</button> 
 </form>
 </div>
 </div>
