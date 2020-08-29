@@ -25,7 +25,7 @@
 </div>
   
 
-<form class="insc-form" action="<?php echo base_url('user/register'); ?>" method="post">
+<form class="insc-form" action="<?php echo base_url('users/register'); ?>" method="post">
   <input type="text" name="nom" class="forme" placeholder="entre nom" required>
   <input type="text" name="prenom" class="forme" placeholder="entre prenom" required>
   <input type="date" name="date" class="forme" placeholder="entre date de naissance" required>
