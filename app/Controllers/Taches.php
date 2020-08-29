@@ -25,9 +25,25 @@ class Taches extends BaseController
         echo view('pages/formTache');
 		echo view('templates/footer');
     }
-    public function update($id=null)
+    public function update($idTache=null)
     {
-        echo $id;
+        if(!empty($idTache)){
+            $model =  new TacheM();
+            $result= $model->where('id',$idTache)->findAll();
+            if (count($result)>0) {
+                $data['tache'] = $result;
+                echo view('templates/header');
+                echo view('pages/formTacheUpdate',$data);
+                echo view('templates/footer');
+            }
+            else {
+                echo " NO";
+            }
+    
+           }
+           else {
+               echo " Probleme id pas disponible";
+           }
     }
     public function insnewtache()
     {
@@ -63,7 +79,64 @@ class Taches extends BaseController
             }
             else {
                 echo "pas ok";
+            }    
+        }   
+     }
+     public function mofierTache()
+     {
+        $val= $this->validate([
+           
+            'idclient'=>'required',
+            'description'=>'required',            
+            'date'=>'required',
+            'dure'=>'required',
+            'statut'=>'required',
+            'prix'=>'required',
+            
+        ]);
+
+        if (!$val) 
+        {
+            $this->insnewtache();
+        }
+
+        else {
+
+            $request = \Config\Services::request();
+            $tache =  new TacheM();
+            helper('text');
+            $id = $request->getPost('id');
+            $idclient = $request->getPost('idclient');
+            $commentaire = $request->getPost('commentaire');
+            $description = $request->getPost('description');
+            $date = $request->getPost('date');
+            $dure = $request->getPost('dure');
+            $prix = $request->getPost('prix');
+            $statut = $request->getPost('statut');
+    
+            $updateTache = [
+                'id'=> $id,
+                'idclient'=> $idclient,
+                'description'=> $description,
+                'commentaire'=> $commentaire,
+                'date'=> $date,
+                'dure'=> $dure,
+                'statut'=> $statut,
+                'prix'=> $prix,
+               
+            ];
+
+            $request = \Config\Services::request();
+            $model =  new TacheM();
+
+            $resultat = $model->update($id,$updateTache);
+            if ($resultat) {
+                echo " bien vue";
             }
-           }
-    }
+            else {
+                echo "NO";
+            }
+        } 
+        return redirect()->to(site_url('taches/index'));       
+     }
 }
