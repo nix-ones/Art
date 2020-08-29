@@ -2,7 +2,7 @@
 use CodeIgniter\Model;
 use http\Env\Request;
 
-class TacheM extends Model
+class EventsM extends Model
 {
     protected $request;
     public function __construct()
@@ -11,19 +11,14 @@ class TacheM extends Model
         $db = \Config\Database::connect();
     }
     protected $DBGroup='default';
-    protected $table='taches';
+    protected $table='events';
     protected $primaryKey='id';
     protected $returnType='array';
-    protected $allowedFields=['idclient ','description','date','dure','statut','commentaire','prix',];
+    protected $allowedFields=['title ','debut','fin'];
 
     public function getAllTache()
     {
-        $query = $this->db->query('SELECT * FROM Taches');
-        return $query->getResult(); 
-    }   
-    public  function get_taches($data)
-    {
-        $query = $this->db->table($this->table)->getWhere($data);
+        $query = $this->db->query('SELECT * FROM envets');
         return $query->getResult();
     }
 }

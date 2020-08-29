@@ -70,6 +70,7 @@ class Taches extends BaseController
             $data['description'] = $request->getPost('description');
             $data['statut'] = $request->getPost('statut');
             $data['date'] = $request->getPost('date');
+            $data['dure'] = $request->getPost('dure');
             $data['prix'] = $request->getPost('prix');
             $data['commentaire'] = $request->getPost('commentaire');
             $myNewUser = $mestache->insert($data);
@@ -82,7 +83,7 @@ class Taches extends BaseController
             }    
         }   
      }
-     public function mofierTache()
+     public function modifierTache()
      {
         $val= $this->validate([
            
@@ -115,7 +116,7 @@ class Taches extends BaseController
             $statut = $request->getPost('statut');
     
             $updateTache = [
-                'id'=> $id,
+               
                 'idclient'=> $idclient,
                 'description'=> $description,
                 'commentaire'=> $commentaire,

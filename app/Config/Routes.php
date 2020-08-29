@@ -43,7 +43,7 @@ $routes->get('deleteTache','Taches::deleteTache/{id}');
 $routes->get('update', 'Taches::update/{id}');
 $routes->get('newtache','Taches::newtache');
 $routes->get('insnewtache','Taches::insnewtache');
-$routes->get('mofierTache','Taches::mofierTache');
+$routes->get('modifierTache','Taches::modifierTache');
 
 
 $routes->get('/', 'Client::index');
@@ -53,6 +53,8 @@ $routes->get('deleteClient', 'Client::deleteClient/{id}');
 $routes->get('update', 'Client::update/{id}'); 
 $routes->get('updateClient', 'Client::updateClient'); 
 
+
+$routes->get('/', 'Events::index');
 
 /**
  * --------------------------------------------------------------------
