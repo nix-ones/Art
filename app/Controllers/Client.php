@@ -75,9 +75,13 @@ class Client extends BaseController
     public function update( $idClient = null )
     {
        if(!empty($idClient)){
+
         $client =  new ClientM();
+
         $result= $client->where('id',$idClient)->findAll();
-        if (count($result)>0) {
+
+        if ( count ($result) > 0) {
+            
             $data['client'] = $result;
             echo view('templates/header');
             echo view('pages/formUpdate',$data);
@@ -116,6 +120,7 @@ class Client extends BaseController
                 $request = \Config\Services::request();
                 $client =  new ClientM();
                 helper('text');
+
                 $id = $request->getPost('id');
                 $nom = $request->getPost('nom');
                 $prenom = $request->getPost('prenom');

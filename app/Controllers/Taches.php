@@ -25,12 +25,16 @@ class Taches extends BaseController
         echo view('pages/formTache');
 		echo view('templates/footer');
     }
-    public function update($idTache=null)
+    public function update( $idTache = null )
     {
         if(!empty($idTache)){
+
             $model =  new TacheM();
+
             $result= $model->where('id',$idTache)->findAll();
+
             if (count($result)>0) {
+                
                 $data['tache'] = $result;
                 echo view('templates/header');
                 echo view('pages/formTacheUpdate',$data);
@@ -38,8 +42,7 @@ class Taches extends BaseController
             }
             else {
                 echo " NO";
-            }
-    
+            }    
            }
            else {
                echo " Probleme id pas disponible";
@@ -61,17 +64,19 @@ class Taches extends BaseController
         {
            $this->newtache();
         }
-    
-        else {
+            else {
             $request = \Config\Services::request();
             $mestache = new  TacheM();
+
             helper('text');
             $data['idclient'] = $request->getPost('idclient');
             $data['description'] = $request->getPost('description');
             $data['statut'] = $request->getPost('statut');
             $data['date'] = $request->getPost('date');
+            $data['dure'] = $request->getPost('dure');
             $data['prix'] = $request->getPost('prix');
             $data['commentaire'] = $request->getPost('commentaire');
+
             $myNewUser = $mestache->insert($data);
 
             if ($myNewUser) {
@@ -86,7 +91,7 @@ class Taches extends BaseController
      {
         $val= $this->validate([
            
-            'idclient'=>'required',
+           
             'description'=>'required',            
             'date'=>'required',
             'dure'=>'required',
@@ -102,9 +107,10 @@ class Taches extends BaseController
 
         else {
 
-            $request = \Config\Services::request();
-            $tache =  new TacheM();
             helper('text');
+            
+            $request = \Config\Services::request();
+
             $id = $request->getPost('id');
             $idclient = $request->getPost('idclient');
             $commentaire = $request->getPost('commentaire');
@@ -115,7 +121,7 @@ class Taches extends BaseController
             $statut = $request->getPost('statut');
     
             $updateTache = [
-                'id'=> $id,
+                
                 'idclient'=> $idclient,
                 'description'=> $description,
                 'commentaire'=> $commentaire,
@@ -126,17 +132,17 @@ class Taches extends BaseController
                
             ];
 
-            $request = \Config\Services::request();
-            $model =  new TacheM();
+            $tache =  new TacheM();
 
-            $resultat = $model->update($id,$updateTache);
+            $resultat = $tache->update($id,$updateTache);
+
             if ($resultat) {
-                echo " bien vue";
+                return redirect()->to(site_url('taches/index'));
             }
             else {
                 echo "NO";
             }
         } 
-        return redirect()->to(site_url('taches/index'));       
+        
      }
 }

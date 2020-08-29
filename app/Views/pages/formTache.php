@@ -28,7 +28,7 @@
 
   <div class="form-row">
     <div class="col-md-6 mb-3">
-      <input type="time" name="dure" class="form-control" placeholder="entret la durée du travail" >
+      <input type="text" name="dure" class="form-control" placeholder="entret la durée du travail" >
     </div>
     <div class="col-md-6 mb-3">
       <select class="form-control" name="statut" >
@@ -42,7 +42,7 @@
 
   <div class="form-row">
     <div class="col-5">
-      <input type="number" name="prix" class="form-control" placeholder="Montant" >
+      <input type="text" name="prix" class="form-control" placeholder="Montant" >
     </div>
   </div>
 

@@ -28,7 +28,7 @@
 
   <div class="form-row">
     <div class="col-md-6 mb-3">
-      <input type="time" name="dure" class="form-control" placeholder="entret la durée du travail" value="<?php echo $tache[0]['dure']?>">
+      <input type="text" name="dure" class="form-control" placeholder="entret la durée du travail" value="<?php echo $tache[0]['dure']?>">
     </div>
     <div class="col-md-6 mb-3">
       <select class="form-control" name="statut" >
@@ -50,6 +50,8 @@
       <textarea rows="6" cols="170" name="commentaire" type="text"> <?php echo $tache[0]['commentaire']?></textarea>
   </div>
   <input type="hidden" name="id" value="<?php echo $tache[0]['id']?>" >
+  
+
   <button class="btn btn-primary btn-lg btn-block">MODIFIER LES TACHES</button> 
 </form>
 </div>
