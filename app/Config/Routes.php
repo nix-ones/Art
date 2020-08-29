@@ -31,12 +31,11 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('users/newUsers','Users::form');
+$routes->post('users/connexion','Users::connexion');
 
 
 $routes->get('/', 'Users::index');
-
-
-
 
 $routes->get('/', 'Taches::index');
 $routes->get('deleteTache','Taches::deleteTache/{id}');

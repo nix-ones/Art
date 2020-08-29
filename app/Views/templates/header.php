@@ -55,7 +55,7 @@
       <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" href="#"><i class="fas fa-home"></i>
+            <a class="nav-link active" href="<?php echo site_url('/Events'); ?>"><i class="fas fa-home"></i>
               <span data-feather="home"></span>
               Dashboard <span class="sr-only">(current)</span>
             </a>
