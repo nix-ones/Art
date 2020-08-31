@@ -33,6 +33,9 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('users/newUsers','Users::form');
 $routes->post('users/connexion','Users::connexion');
+$routes->get('/signuOut','Users::signuOut');
+
+
 
 
 $routes->get('/', 'Users::index');
@@ -43,6 +46,9 @@ $routes->get('update', 'Taches::update/{id}');
 $routes->get('newtache','Taches::newtache');
 $routes->get('insnewtache','Taches::insnewtache');
 $routes->get('modifierTache','Taches::modifierTache');
+$routes->get('/signuOut','Users::signuOut');
+$routes->get('vue_users','Users::listeClient');
+
 
 
 $routes->get('/', 'Client::index');
@@ -54,7 +60,8 @@ $routes->get('updateClient', 'Client::updateClient');
 
 
 $routes->get('/', 'Events::index');
-
+$routes->get('Events/fullCalendar','Events::calendrier');
+$routes->get('Events/activite','Events::activite');
 /**
  * --------------------------------------------------------------------
  * Additional Routing

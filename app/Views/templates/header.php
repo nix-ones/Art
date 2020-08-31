@@ -35,6 +35,13 @@
     <script src="<?php echo base_url('assets/js/popper.min.js');?>"></script>
     <script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
 
+
+    
+  
+
+  
+  
+
     </head>
   <body>
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -55,9 +62,9 @@
       <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" href="<?php echo site_url('/Events'); ?>"><i class="fas fa-home"></i>
+            <a class="nav-link active" href="<?php echo site_url('Events/calendrier'); ?>"><i class="fas fa-home"></i>
               <span data-feather="home"></span>
-              Dashboard <span class="sr-only">(current)</span>
+              Calendrier <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">

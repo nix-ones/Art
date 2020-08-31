@@ -37,6 +37,7 @@
   <input type="password" name="password" class="forme" placeholder="entre mot de passe" required>
   <input type="password" name="passwordC" class="forme" placeholder="confirme mot de passe" required>
   <input type="submit" class="nn" value="Valider">
+  <a class="fdsv" href="<?php echo site_url('users/login'); ?>">Se connecter </a>
 </form>
 </div>
 </body>

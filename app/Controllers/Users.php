@@ -117,6 +117,21 @@ class Users extends BaseController
         helper('form');
         $session =  \Config\Services::session();
         $session->destroy();
-        return redirect()->to(site_url('users/login'));
+        return redirect()->to(site_url('/home'));
+    }
+    public function listeClient()
+    {
+        $session =  \Config\Services::session();        
+        $checkUser =  $session->get('id');
+
+
+        $mesUsers = new  UsersM();
+        $data['users'] = $mesUsers->getAllClientByUsers();
+        
+      if ($checkUser) {
+        echo view('templates/header');
+        echo view('pages/listeTempon',$data);
+		echo view('templates/footer');
+      }
     }
 }
