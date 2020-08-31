@@ -1,8 +1,15 @@
 <?php namespace App\Controllers;
 use App\Models\TacheM;
-class Taches extends BaseController
+use App\Models\TempoM;
+use App\Models\ClientM;
+use CodeIgniter\Controller;
+class Taches extends Controller
 {
+    public function __construct()
+    {
    
+        $db = \Config\Database::connect();
+    }
     public function index()
     {
         $mestache = new  TacheM();
@@ -21,8 +28,10 @@ class Taches extends BaseController
     public function newtache()
     {
         helper('form');
+        $mesClients = new  ClientM();
+        $data['clients'] = $mesClients->getAllClient();
         echo view('templates/header'); 
-        echo view('pages/formTache');
+        echo view('pages/formTache',$data);
 		echo view('templates/footer');
     }
     public function update( $idTache = null )
@@ -57,7 +66,7 @@ class Taches extends BaseController
             'dure'=>'required',
             'statut'=>'required',
             'prix'=>'required',
-            
+            'idclient'=>'required',
             
         ]);
         if (!$val) 
@@ -66,24 +75,47 @@ class Taches extends BaseController
         }
             else {
             $request = \Config\Services::request();
-            $mestache = new  TacheM();
+            $session =  \Config\Services::session();        
+            
+            $mestaches = new  TacheM();
+            $mesClients = new TempoM();
 
-            helper('text');
-            $data['idclient'] = $request->getPost('idclient');
-            $data['description'] = $request->getPost('description');
-            $data['statut'] = $request->getPost('statut');
-            $data['date'] = $request->getPost('date');
-            $data['dure'] = $request->getPost('dure');
-            $data['prix'] = $request->getPost('prix');
-            $data['commentaire'] = $request->getPost('commentaire');
+            helper('form');
 
-            $myNewUser = $mestache->insert($data);
+            $idclient = $request->getPost('idclient');
+            $description = $request->getPost('description');
+            $statut = $request->getPost('statut');
+            $date = $request->getPost('date');
+            $dure = $request->getPost('dure');
+            $prix = $request->getPost('prix');
+            $commentaire = $request->getPost('commentaire');
 
-            if ($myNewUser) {
-                return redirect()->to(site_url('taches/index'));
+            $myNewUser = [
+                
+                'idclient'=> $idclient,
+                'description'=> $description,
+                'commentaire'=> $commentaire,
+                'date'=> $date,
+                'dure'=> $dure,
+                'statut'=> $statut,
+                'prix'=> $prix,
+               
+            ];
+
+            $mesCli = [
+                'client_id' => $idclient,
+                'urser_id' =>  $session->get('id'),
+            ];
+           
+            $result = $mestaches->inserting($myNewUser);
+            $result = $mesClients->inserting($mesCli);
+
+                
+            if ($result) {
+                echo ' pas ok';
             }
             else {
-                echo "pas ok";
+                return redirect()->to(site_url('taches/index'));
             }    
         }   
      }

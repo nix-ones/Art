@@ -16,9 +16,9 @@ class EventsM extends Model
     protected $returnType='array';
     protected $allowedFields=['title ','debut','fin'];
 
-    public function getAllTache()
+    public function getAllEvents()
     {
-        $query = $this->db->query('SELECT * FROM envets');
-        return $query->getResult();
+        return $this->findAll();
     }
+    
 }

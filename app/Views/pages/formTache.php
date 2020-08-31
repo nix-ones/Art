@@ -15,7 +15,15 @@
  
   <div class="form-row">
     <div class="form-group col-md-6">
-      <input type="text" name="id" class="form-control" placeholder="Selection client" >
+    <select name="idclient" class="form-control">  
+      
+      <?php
+          foreach($clients as $client){
+            echo "<option value='".$client->id."'>".$client->nom."</option>";
+          }
+      ?>
+     
+      </select>
     </div>
     <div class="form-group col-md-6">
       <input type="date" name="date" class="form-control" placeholder="Entrer la date" >
