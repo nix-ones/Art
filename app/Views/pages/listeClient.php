@@ -34,7 +34,7 @@
             <?php foreach ($clients as $client ) :?>
                <tr>
                     
-                    <td><?php echo $client->nom; ?></td>
+                    <td><a href="<?php echo site_url('client/infoclient/'.$client->id); ?>"><?php echo $client->nom; ?></a></td>                    
                     <td><?php echo $client->prenom; ?></td>
                     <td><?php echo $client->sexe; ?></td>
                     <td><?php echo $client->email; ?></td>

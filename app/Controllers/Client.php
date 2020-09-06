@@ -161,4 +161,21 @@ class Client extends BaseController
             }
             return redirect()->to(site_url('client/index'));
     }
+    public function infoclient($id=null)
+    {
+        if(!empty($id)){
+
+            $client =  new ClientM();
+    
+            $result= $client->where('id',$id)->findAll();
+    
+            if ( count ($result) > 0) {
+                
+                $data['client'] = $result;
+                echo view('templates/header');
+                echo view('pages/detailClient',$data);
+                echo view('templates/footer');
+            }
+        }
+    }
 }
