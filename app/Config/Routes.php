@@ -56,6 +56,7 @@ $routes->get('newClient','Client::newClient');
 $routes->get('validateClient','Client::validateClient');
 $routes->get('deleteClient', 'Client::deleteClient/{id}'); 
 $routes->get('update', 'Client::update/{id}'); 
+$routes->get('detailClient', 'Client::infoclient/{id}'); 
 $routes->get('updateClient', 'Client::updateClient'); 
 
 
