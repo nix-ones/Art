@@ -21,7 +21,7 @@
 <hr>
 <div class="container bootstrap snippet">
     <div class="row">
-  		<div class="col-sm-10"><h1><?php echo $client[0]['nom']?></h1></div>
+  		<div class="col-sm-10"><h1><?php echo $client[0]['nom']?> </h1></div>
     	
     </div>
     <div class="row">
@@ -30,12 +30,9 @@
 
       <div class="text-center">
         <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-        <h6>Upload a different photo...</h6>
-        <input type="file" class="text-center center-block file-upload">
+        <h6><?php echo $client[0]['nom']?></h6>
       </div></hr><br>
-
-               
-                   
+                               
           
           <ul class="list-group">
             <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
@@ -270,20 +267,7 @@
                               <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
                           </div>
                       </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                            <label for="password2"><h4>Verify</h4></label>
-                              <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                           <div class="col-xs-12">
-                                <br>
-                              	<button class="btn btn-lg btn-success pull-right" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                               	<!--<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>-->
-                            </div>
-                      </div>
+                     
               	</form>
               </div>
                

@@ -18,7 +18,8 @@ class TacheM extends Model
 
     public function getAllTache()
     {
-        $query = $this->db->query('SELECT * FROM Taches');
+        $query = $this->db->query('SELECT s.nom,ta.* from clients AS s 
+        JOIN taches AS ta ON ta.idclient = s.id');
         return $query->getResult(); 
     }   
     public  function get_taches($data)

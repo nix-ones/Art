@@ -20,7 +20,7 @@
     <div class="form-group col-md-6">
       <input type="text" name="prenom" class="form-control" placeholder="Prénom" >
     </div>
-  </div>
+    
 
   <div class="form-group">
     <input type="email" name="email" class="form-control" placeholder="E-mail" >
@@ -29,13 +29,6 @@
   <div class="form-row">
     <div class="col-md-6 mb-3">
       <input type="text" name="telephone" class="form-control" placeholder="Télephone" >
-    </div>
-    <div class="col-md-6 mb-3">
-      <select class="form-control" name="sexe" >
-         <option value="Homme">Homme</option>
-         <option value="Femme">Femme</option>
-      
-       </select>
     </div>
   </div>
 
@@ -51,20 +44,38 @@
     </div>
   </div>
   
-  <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <label for="validationDefault01"></label>
-      <input type="text" name="ville" class="form-control" placeholder="Ville" required>
+    
+  <select name="ville" class="form-control">  
+      
+      <?php
+          foreach($citys as $city){
+            echo "<option value='".$city->id."'>".$city->nom."</option>";
+          }
+      ?>
+     
+      </select>
+      <select name="sexe" class="form-control">  
+      
+      <?php
+          foreach($sexes as $sexe){
+            echo "<option value='".$sexe->id."'>".$sexe->nom."</option>";
+          }
+      ?>
+     
+      </select>
+      <select name="langue" class="form-control">  
+      
+      <?php
+          foreach($langues as $langue){
+            echo "<option value='".$langue->id."'>".$langue->nom."</option>";
+          }
+      ?>
+     
+      </select>
+      <div class="col-5">
+      <input type="file" name="photo" class="form-control" placeholder="phoyo" >
     </div>
-    <div class="col-md-6 mb-3">
-      <label for="validationDefault02"></label>
-      <select class="form-control" placeholder="Ville" name="langue" placeholder="langue" required>
-         <option value="Néerlandais">Néerlandais</option>
-         <option value="Français">Français</option>
-         <option value="Allemand">Allemand</option>
-       </select>
-    </div>
-  </div>
+  
   <div class="form-group">
   <textarea rows="6" cols="170" name="commentaire" type="text">
   </textarea>

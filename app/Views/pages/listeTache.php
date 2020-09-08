@@ -31,7 +31,7 @@
             <?php foreach ($taches as $tache ) :?>
                <tr>
                     
-                    <td><?php echo $tache->idclient; ?></td>
+                    <td><?php echo $tache->nom; ?></td>
                     <td><?php echo $tache->description; ?></td>
                     <td><?php echo $tache->date; ?></td>
                     <td><?php echo $tache->dure; ?></td>

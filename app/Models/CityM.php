@@ -2,7 +2,7 @@
 use CodeIgniter\Model;
 use http\Env\Request;
 
-class TempoM extends Model
+class CityM extends Model
 {
     protected $request;
     public function __construct()
@@ -11,15 +11,14 @@ class TempoM extends Model
         $db = \Config\Database::connect();
     }
     protected $DBGroup='default';
-    protected $table='tempo';
+    protected $table='city';
     protected $primaryKey='id';
     protected $returnType='array';
-    protected $allowedFields=['client_id','urser_id'];
+    protected $allowedFields= ['nom'];
     
-    public  function inserting($data)
+    public function getAllCity()
     {
-        $query = $this->db->table($this->table)->insert($data);
+        $query = $this->db->query('SELECT * FROM city');
         return $query->getResult();
     }
-    
 }
