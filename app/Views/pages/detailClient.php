@@ -21,8 +21,7 @@
 <hr>
 <div class="container bootstrap snippet">
     <div class="row">
-  		<div class="col-sm-10"><h1><?php echo $client[0]['nom']?> </h1></div>
-    	
+   
     </div>
     <div class="row">
   		<div class="col-sm-3"><!--left col-->
@@ -30,7 +29,7 @@
 
       <div class="text-center">
         <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-        <h6><?php echo $client[0]['nom']?></h6>
+        <h6></h6>
       </div></hr><br>
                                
           
@@ -53,19 +52,22 @@
           <div class="tab-content">
             <div class="tab-pane active" id="home">
                 <hr>
-                  <form class="form" action="##" method="post" id="registrationForm">
+                  <form  class="form" action="##" method="post" id="registrationForm">
+                  
+                    <?php foreach ($client as $cl ) :?>
+                   
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                               <label for="first_name"><h4>Nom</h4></label>
-                              <input type="text" class="form-control" name="first_name" id="first_name"  value="<?php echo $client[0]['nom']?>" disabled>
+                              <input type="text" class="form-control" name="first_name" id="first_name"  value="<?php echo $cl->nom?>" disabled>
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                             <label for="last_name"><h4>Prénom</h4></label>
-                              <input type="text" class="form-control" name="last_name" id="last_name"  value="<?php echo $client[0]['prenom']?>"  disabled>
+                              <input type="text" class="form-control" name="last_name" id="last_name"  value="<?php echo $cl->prenom ?>"  disabled>
                           </div>
                       </div>
           
@@ -73,207 +75,72 @@
                           
                           <div class="col-xs-6">
                               <label for="phone"><h4>Téléphone</h4></label>
-                              <input type="text" class="form-control" name="phone" id="phone" value="<?php echo $client[0]['telephone']?>" disabled>
+                              <input type="text" class="form-control" name="phone" id="phone" value="<?php echo $cl->telephone?>" disabled>
                           </div>
                       </div>
           
                       <div class="form-group">
                           <div class="col-xs-6">
                              <label for="mobile"><h4>Sexe</h4></label>
-                              <input type="text" class="form-control" name="mobile" id="mobile" value="<?php echo $client[0]['sexe']?>" disabled>
+                              <input type="text" class="form-control" name="mobile" id="mobile" value="<?php echo $cl->genre?>" disabled>
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                               <label for="email"><h4>Email</h4></label>
-                              <input type="email" class="form-control" name="email" id="email" value="<?php echo $client[0]['email']?>" disabled>
+                              <input type="email" class="form-control" name="email" id="email" value="<?php echo $cl->email ?>" disabled>
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                               <label for="email"><h4>Adresse</h4></label>
-                              <input type="email" class="form-control" id="location" value="<?php echo $client[0]['adresse']?>" disabled>
+                              <input type="email" class="form-control" id="location" value="<?php echo  $cl->adresse ?>" disabled>
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                               <label for="password"><h4>Langue</h4></label>
-                              <input  class="form-control" name="password" id="password" value="<?php echo $client[0]['langue']?>" disabled>
+                              <input  class="form-control" name="password" id="password" value="<?php echo $cl->lang_name ?>" disabled>
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                             <label for="password2"><h4>Date</h4></label>
-                              <input class="form-control" name="password2" id="password2" value="<?php echo $client[0]['date']?>" disabled>
+                              <input class="form-control" name="password2" id="password2" value="<?php echo $cl->date?>" disabled>
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                               <label for="password"><h4>Code Postal</h4></label>
-                              <input  class="form-control" name="password" id="password" value="<?php echo $client[0]['code_postal']?>" disabled>
+                              <input  class="form-control" name="password" id="password" value="<?php echo $cl->code_postal ?>" disabled>
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                             <label for="password2"><h4>Ville</h4></label>
-                              <input class="form-control" name="password2" id="password2" value="<?php echo $client[0]['ville']?>" disabled>
+                              <input class="form-control" name="password2" id="password2" value="<?php echo $cl->ville ?>" disabled>
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                             <label for="password2"><h4>Commentaire</h4></label>
-                            <textarea rows="5" cols="110" name="commentaire" type="text" disabled><?php echo $client[0]['commentaire']?></textarea>
+                            <textarea rows="5" cols="110" name="commentaire" type="text" disabled><?php echo $cl->commentaire ?></textarea>
                           </div>
                       </div>
-
+                      <?php endforeach;?>
                       
               	</form>
               
               <hr>
               
              </div><!--/tab-pane-->
-             <div class="tab-pane" id="messages">
-               
-               <h2></h2>
-               
-               <hr>
-                  <form class="form" action="##" method="post" id="registrationForm">
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="first_name"><h4>First name</h4></label>
-                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                            <label for="last_name"><h4>Last name</h4></label>
-                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
-                          </div>
-                      </div>
-          
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="phone"><h4>Phone</h4></label>
-                              <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
-                          </div>
-                      </div>
-          
-                      <div class="form-group">
-                          <div class="col-xs-6">
-                             <label for="mobile"><h4>Mobile</h4></label>
-                              <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="email"><h4>Email</h4></label>
-                              <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="email"><h4>Location</h4></label>
-                              <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="password"><h4>Password</h4></label>
-                              <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                            <label for="password2"><h4>Verify</h4></label>
-                              <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                           <div class="col-xs-12">
-                                <br>
-                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                               	<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
-                            </div>
-                      </div>
-              	</form>
-               
-             </div><!--/tab-pane-->
-             <div class="tab-pane" id="settings">
-            		
-               	
-                  <hr>
-                  <form class="form" action="##" method="post" id="registrationForm">
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="first_name"><h4>First name</h4></label>
-                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                            <label for="last_name"><h4>Last name</h4></label>
-                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
-                          </div>
-                      </div>
-          
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="phone"><h4>Phone</h4></label>
-                              <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
-                          </div>
-                      </div>
-          
-                      <div class="form-group">
-                          <div class="col-xs-6">
-                             <label for="mobile"><h4>Mobile</h4></label>
-                              <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="email"><h4>Email</h4></label>
-                              <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="email"><h4>Location</h4></label>
-                              <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="password"><h4>Password</h4></label>
-                              <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
-                          </div>
-                      </div>
-                     
-              	</form>
-              </div>
-               
-              </div><!--/tab-pane-->
-          </div><!--/tab-content-->
-
         </div><!--/col-9-->
     </div><!--/row-->
                                                       

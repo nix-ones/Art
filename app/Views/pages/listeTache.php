@@ -18,11 +18,12 @@
             <thead>
                 <tr> 
                 <th scope="col">CLIENT</th>
+                <th scope="col">TITRE</th>                
                 <th scope="col">DESCRIPTION</th>
-                <th scope="col">DATE</th>
-                <th scope="col">DUREE</th>
-                <th scope="col">PRIX</th>
+                <th scope="col">DATE DE DEBUT </th>
+                <th scope="col">DATE DE FIN </th>
                 <th scope="col">STATUT</th>
+                <th scope="col">PRIX</th>
                 <th scope="col">COMMENTAIRE</th>
                 <th scope="col">ACTION</th>
                 </tr>
@@ -32,11 +33,12 @@
                <tr>
                     
                     <td><?php echo $tache->nom; ?></td>
+                    <td><?php echo $tache->titre; ?></td>
                     <td><?php echo $tache->description; ?></td>
-                    <td><?php echo $tache->date; ?></td>
-                    <td><?php echo $tache->dure; ?></td>
-                    <td><?php echo $tache->prix; ?></td>
+                    <td><?php echo $tache->debut; ?></td>
+                    <td><?php echo $tache->fin; ?></td>
                     <td><?php echo $tache->statut; ?></td>
+                    <td><?php echo $tache->prix; ?></td>
                     <td><?php echo $tache->commentaire; ?></td>
                     <td>
                     <a class="btn btn-danger" href="<?php echo base_url('taches/deleteTache/'.$tache->id)?>"> <i class="fa fa-trash-alt"></i></a>
