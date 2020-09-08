@@ -1,12 +1,16 @@
 <?php namespace App\Controllers;
 use App\Models\ClientM;
+use App\Models\CityM;
+use App\Models\LangueM;
+use App\Models\SexeM;
 class Client extends BaseController
 {
    
     public function index()
     {
         $mesClients = new  ClientM();
-        $data['clients'] = $mesClients->getAllClient();
+        $data['clients'] = $mesClients->getAllClients();
+        
         echo view('templates/header');
         echo view('pages/listeClient',$data);
 		echo view('templates/footer');
@@ -14,9 +18,21 @@ class Client extends BaseController
     public function newClient()
     {
         helper('form');
+        
+        $mesCity = new CityM();
+        $data['citys'] = $mesCity->getAllCity();
+
+
+        $mesLangue = new LangueM();
+        $data['langues'] = $mesLangue->getAllLangue();
+
+        $mesSexe = new SexeM();
+        $data['sexes'] = $mesSexe->getAllSexe();
+
+
         echo view('templates/header'); 
-        echo view('pages/formClient');
-		echo view('templates/footer');
+        echo view('pages/formClient',$data);
+		echo view('templates/footer'); 
     }
    public function validateClient() 
    {
@@ -24,11 +40,11 @@ class Client extends BaseController
         'nom'=>'required|min_length[5]',
         'prenom'=>'required|min_length[5]',
         'email'=>'required|valid_email[clients.email]',
-        'telephone'=>'required|min_length[5]|max_length[10]',
+        'telephone'=>'required|min_length[3]|max_length[5]',
         'adresse'=>'required',
         'date'=>'required',
         'cp'=>'required',
-        'ville'=>'required|min_length[5]',
+        'ville'=>'required',
         'langue'=>'required',
         
     ]);
@@ -44,15 +60,18 @@ class Client extends BaseController
         $data['nom'] = $request->getPost('nom');
         $data['prenom'] = $request->getPost('prenom');
         $data['date'] = $request->getPost('date');
-        $data['sexe'] = $request->getPost('sexe');
+        $data['idSexe'] = $request->getPost('sexe');
         $data['email'] = $request->getPost('email');
         $data['adresse'] = $request->getPost('adresse');
 
-        $data['langue'] = $request->getPost('langue');
+        $data['idLangue'] = $request->getPost('langue');
         $data['telephone'] = $request->getPost('telephone');
-        $data['ville'] = $request->getPost('ville');
+        $data['idCity'] = $request->getPost('ville');
         $data['code_postal'] = $request->getPost('cp'); 
         $data['commentaire'] = $request->getPost('commentaire');
+        $data['photo'] = $request->getPost('photo');
+
+
 
         $checkEmailExiste = $client->where('email',$data['email'])->findAll();
 
@@ -60,7 +79,7 @@ class Client extends BaseController
                     echo "Mail existe";
                 }
                 else{
-                    $myNewUser = $client->insert($data);
+                    $myNewUser = $client->inserting($data);
                     return redirect()->to(site_url('client/index'));
                 }
         
@@ -166,9 +185,9 @@ class Client extends BaseController
         if(!empty($id)){
 
             $client =  new ClientM();
-    
-            $result= $client->where('id',$id)->findAll();
-    
+            
+            $result= $client->getAllClientsById($id);
+            
             if ( count ($result) > 0) {
                 
                 $data['client'] = $result;

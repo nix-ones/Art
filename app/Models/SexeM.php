@@ -2,7 +2,7 @@
 use CodeIgniter\Model;
 use http\Env\Request;
 
-class TempoM extends Model
+class SexeM extends Model
 {
     protected $request;
     public function __construct()
@@ -11,15 +11,18 @@ class TempoM extends Model
         $db = \Config\Database::connect();
     }
     protected $DBGroup='default';
-    protected $table='tempo';
+    protected $table='sexe';
     protected $primaryKey='id';
     protected $returnType='array';
-    protected $allowedFields=['client_id','urser_id'];
+    protected $allowedFields= ['nom'];
     
-    public  function inserting($data)
+    public function getAllSexe()
     {
-        $query = $this->db->table($this->table)->insert($data);
+        $query = $this->db->query('SELECT * FROM sexe');
         return $query->getResult();
     }
-    
+    public function getSexe() {
+        $query = $this->db->query( 'SELECT s.nom from sexe AS s JOIN clients AS cl ON cl.idSexe= s.id');
+        return $query->getResult(); 
+    }
 }

@@ -65,9 +65,18 @@
        </select>
     </div>
   </div>
-  <div class="form-group">
-  <textarea rows="6" cols="170" name="commentaire" type="text" ><?php echo $client[0]['commentaire']?></textarea>
+
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+    <textarea rows="6" cols="70" name="commentaire" type="text" ><?php echo $client[0]['commentaire']?></textarea>
+    </div>
+    <div class="form-group col-md-6">
+       INSERT UNE PHOTO <input type="file" name="photo">
+    </div>
   </div>
+
+
   <input type="hidden" name="id" value="<?php echo $client[0]['id']?>" >
   <button class="btn btn-primary btn-lg btn-block">Modifier client</button> 
 </form>

@@ -36,14 +36,14 @@
                     
                     <td><a href="<?php echo site_url('client/infoclient/'.$client->id); ?>"><?php echo $client->nom; ?></a></td>                    
                     <td><?php echo $client->prenom; ?></td>
-                    <td><?php echo $client->sexe; ?></td>
+                    <td><?php echo $client->genre; ?></td>
                     <td><?php echo $client->email; ?></td>
                     <td><?php echo $client->date; ?></td>
                     <td><?php echo $client->telephone; ?></td>
                     <td><?php echo $client->adresse; ?></td>
                     <td><?php echo $client->code_postal; ?></td>
-                    <td><?php echo $client->ville; ?></td>
-                    <td><?php echo $client->langue; ?></td>
+                    <td><?php echo $client->ville;?></td>
+                    <td><?php echo $client->lang_name; ?></td>
                     <td>
                         
                         <a class="btn btn-danger" href="<?php echo base_url('client/deleteClient/'.$client->id)?>"> <i class="fa fa-trash-alt"></i></a>

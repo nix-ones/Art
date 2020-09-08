@@ -14,7 +14,7 @@ class Taches extends Controller
     {
         $mestache = new  TacheM();
         $data['taches'] = $mestache->getAllTache();
-
+       
         echo view('templates/header');
         echo view('pages/listeTache',$data);
 		echo view('templates/footer');

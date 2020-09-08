@@ -38,7 +38,7 @@
                     
                     <td><?php echo $user->nom  ; ?></td>
                     <td><?php echo $user->prenom ; ?></td>
-                    <td><?php echo $user->sexe ; ?></td>
+                    <td><?php echo $user->genre ; ?></td>
                     <td><?php echo $user->email ; ?></td>
                     <td><?php echo $user->date ; ?></td>
                     <td><?php echo $user->telephone ; ?></td>
