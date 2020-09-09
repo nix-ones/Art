@@ -49,7 +49,7 @@
       
       <?php
           foreach($citys as $city){
-            echo "<option value='".$city->id."'>".$city->nom."</option>";
+            echo "<option value='".$city->id."'>".$city->ville."</option>";
           }
       ?>
      
@@ -58,7 +58,7 @@
       
       <?php
           foreach($sexes as $sexe){
-            echo "<option value='".$sexe->id."'>".$sexe->nom."</option>";
+            echo "<option value='".$sexe->id."'>".$sexe->genre."</option>";
           }
       ?>
      
@@ -67,7 +67,7 @@
       
       <?php
           foreach($langues as $langue){
-            echo "<option value='".$langue->id."'>".$langue->nom."</option>";
+            echo "<option value='".$langue->id."'>".$langue->lang_name."</option>";
           }
       ?>
      

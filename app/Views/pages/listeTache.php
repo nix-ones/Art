@@ -37,7 +37,7 @@
                     <td><?php echo $tache->description; ?></td>
                     <td><?php echo $tache->debut; ?></td>
                     <td><?php echo $tache->fin; ?></td>
-                    <td><?php echo $tache->statut; ?></td>
+                    <td><?php echo $tache->nom_status; ?></td>
                     <td><?php echo $tache->prix; ?></td>
                     <td><?php echo $tache->commentaire; ?></td>
                     <td>

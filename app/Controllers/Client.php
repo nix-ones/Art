@@ -1,15 +1,21 @@
 <?php namespace App\Controllers;
+use App\Models\TacheM;
 use App\Models\ClientM;
 use App\Models\CityM;
 use App\Models\LangueM;
 use App\Models\SexeM;
+use App\Models\TempoM;
 class Client extends BaseController
 {
    
     public function index()
     {
         $mesClients = new  ClientM();
-        $data['clients'] = $mesClients->getAllClients();
+        $session =  \Config\Services::session();        
+        $checkUser =  $session->get('id');
+
+
+        $data['clients'] = $mesClients->getAllClientByUsers();
         
         echo view('templates/header');
         echo view('pages/listeClient',$data);
@@ -87,8 +93,24 @@ class Client extends BaseController
    }
    public function deleteClient($id=null)
     {
-        $model =  new ClientM();
-        $model->delete($id);
+         $citys= new CityM();
+         $sexes= new SexeM();
+        $clients =  new ClientM();
+        $temp= new TempoM();
+        $tache = new TacheM();
+
+        $cityId = $citys->where('id',$id)->findAll();
+        $sexeId = $sexes->where('id',$id)->findAll();
+        $clientId = $clients->where('id',$id)->findAll();
+        $tempId = $temp->where('id',$id)->findAll();
+        $tacheId = $tache->where('id',$id)->findAll();
+
+        $result = $citys->delete($cityId);
+        $result = $sexes->delete($sexeId);
+        $result = $temp->delete($tempId);
+        $result = $tache->delete($tacheId);
+        $result = $clients->delete($clientId);
+        
         return redirect()->to(base_url()."/client/index");
     }
     public function update( $idClient = null )

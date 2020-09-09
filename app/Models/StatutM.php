@@ -2,7 +2,7 @@
 use CodeIgniter\Model;
 use http\Env\Request;
 
-class EventsM extends Model
+class StatutM extends Model
 {
     protected $request;
     public function __construct()
@@ -11,18 +11,14 @@ class EventsM extends Model
         $db = \Config\Database::connect();
     }
     protected $DBGroup='default';
-    protected $table='events';
+    protected $table='statut';
     protected $primaryKey='id';
     protected $returnType='array';
-    protected $allowedFields=['titre ','debut','fin'];
-
-    public function getAllEvents()
+    protected $allowedFields= ['nom'];
+    
+    public function getAllStatut()
     {
-        return $this->findAll();
-    }
-    public  function inserting($data)
-    {
-        $query = $this->db->table($this->table)->insert($data);
+        $query = $this->db->query('SELECT * FROM statut');
         return $query->getResult();
     }
 }

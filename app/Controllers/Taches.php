@@ -2,6 +2,8 @@
 use App\Models\TacheM;
 use App\Models\TempoM;
 use App\Models\ClientM;
+use App\Models\StatutM;
+use App\Models\EventsM;
 use CodeIgniter\Controller;
 class Taches extends Controller
 {
@@ -30,6 +32,10 @@ class Taches extends Controller
         helper('form');
         $mesClients = new  ClientM();
         $data['clients'] = $mesClients->getAllClient();
+
+        $mesStatut = new  StatutM();
+        $data['statuts'] = $mesStatut->getAllStatut();
+
         echo view('templates/header'); 
         echo view('pages/formTache',$data);
 		echo view('templates/footer');
@@ -62,11 +68,11 @@ class Taches extends Controller
         $val= $this->validate([
             
             'description'=>'required|min_length[5]',
-            'date'=>'required',
-            'dure'=>'required',
-            'statut'=>'required',
+            'debut'=>'required',
+            'fin'=>'required',
             'prix'=>'required',
             'idclient'=>'required',
+            'titre'=>'required',
             
         ]);
         if (!$val) 
@@ -79,14 +85,16 @@ class Taches extends Controller
             
             $mestaches = new  TacheM();
             $mesClients = new TempoM();
+            $mesEvents = new EventsM();
 
             helper('form');
 
             $idclient = $request->getPost('idclient');
             $description = $request->getPost('description');
-            $statut = $request->getPost('statut');
-            $date = $request->getPost('date');
-            $dure = $request->getPost('dure');
+            $titre = $request->getPost('titre');
+            $idStatut = $request->getPost('idStatut');
+            $fin = $request->getPost('fin');
+            $debut = $request->getPost('debut');
             $prix = $request->getPost('prix');
             $commentaire = $request->getPost('commentaire');
 
@@ -95,9 +103,10 @@ class Taches extends Controller
                 'idclient'=> $idclient,
                 'description'=> $description,
                 'commentaire'=> $commentaire,
-                'date'=> $date,
-                'dure'=> $dure,
-                'statut'=> $statut,
+                'titre'=> $titre,
+                'debut'=> $debut,
+                'fin'=> $fin,
+                'idStatut'=> $idStatut,
                 'prix'=> $prix,
                
             ];
@@ -106,9 +115,16 @@ class Taches extends Controller
                 'client_id' => $idclient,
                 'urser_id' =>  $session->get('id'),
             ];
-           
+            $mesEve=[
+                'titre'=> $titre,
+                'debut'=> $debut,
+                'fin'=> $fin,
+            ];
+
+          
             $result = $mestaches->inserting($myNewUser);
             $result = $mesClients->inserting($mesCli);
+            $result = $mesEvents->inserting($mesEve);
 
                 
             if ($result) {

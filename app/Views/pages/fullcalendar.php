@@ -43,7 +43,7 @@
               foreach ($evs as $event) {
                  
                   echo $sep;
-                  echo "{title:'".$event['title']."',";
+                  echo "{title:'".$event['titre']."',";
                   echo "debut:'".$event['debut']."',";
                   echo "fin:'".$event['fin']."'}";
               $sep = ",";
