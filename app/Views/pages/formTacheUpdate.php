@@ -13,45 +13,63 @@
       <?= \Config\Services::validation()->listErrors(); ?>
       <form action="<?php echo base_url('taches/modifierTache'); ?>" method="post"> 
  
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <input type="text" name="idclient" class="form-control" placeholder="Selection client" value="<?php echo $tache[0]['idclient']?>">
-    </div>
-    <div class="form-group col-md-6">
-      <input type="date" name="date" class="form-control" placeholder="Entrer la date" value="<?php echo $tache[0]['date']?>" >
-    </div>
-  </div>
-
-  <div class="form-group">
-    <input type="text" name="description" class="form-control" placeholder="Entrer la déscription" value="<?php echo $tache[0]['description']?>">
-  </div>
-
-  <div class="form-row">
+      <div class="form-row">
     <div class="col-md-6 mb-3">
-      <input type="text" name="dure" class="form-control" placeholder="Combien de munite" value="<?php echo $tache[0]['dure']?>">
+      <label for="validationDefault01">Selectionne nom dU client</label>
+      <select name="idclient" class="form-control"value="<?php echo $tache[0]['idclient']?>">  
+      
+      <?php
+          foreach($clients as $client){
+            echo "<option value='".$client->id."'>".$client->nom."</option>";
+          }
+      ?>
+     
+      </select>
     </div>
     <div class="col-md-6 mb-3">
-      <select class="form-control" name="statut" >
-         <option value="FAIT">Fait</option>
-         <option value="EN COURS">En cours</option> 
-         <option value="EN ATTENTE">  En attente</option>      
-       </select>
+      <label for="validationDefault02">Selection le Statut</label>
+      <select name="idStatut" class="form-control" value="<?php echo $tache[0]['idStatut']?>" >  
+      
+      <?php
+          foreach($statuts as $statut){
+            echo "<option value='".$statut->id."'>".$statut->nom_status."</option>";
+          }
+      ?>
+     
+      </select>
     </div>
   </div>
-
   <div class="form-row">
-    <div class="col-5">
-      <input type="number" name="prix" class="form-control" placeholder="Montant" value="<?php echo $tache[0]['prix']?>">
+    <div class="col-md-6 mb-3">
+      <label for="validationTooltip01">Titre</label>
+      <input type="text" name="titre" class="form-control" value="<?php echo $tache[0]['titre']?>">
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="validationTooltip02">Description de la tâche</label>
+      <input type="text" name = "description" class="form-control" value="<?php echo $tache[0]['description']?>" >
     </div>
   </div>
-
-  <div class="form-group">
-      <textarea rows="6" cols="170" name="commentaire" type="text"> <?php echo $tache[0]['commentaire']?></textarea>
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationDefault03">Prix</label>
+      <input type="float"name ="prix" class="form-control" id="validationDefault03" value="<?php echo $tache[0]['prix']?>" >
+    </div>
+    <div class="col-md-3 mb-3">
+    <label for="validationDefault05">Date de Fin</label>
+      <input type="date" name="debut" class="form-control" id="validationDefault05" value="<?php echo $tache[0]['debut']?>">
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationDefault05">Date de Fin</label>
+      <input type="date" name="fin" class="form-control" id="validationDefault05" value="<?php echo $tache[0]['fin']?>">
+    </div>
   </div>
-  <input type="hidden" name="id" value="<?php echo $tache[0]['id']?>" >
   
+  <div class="form-group">
+  <textarea rows="6" cols="170" name="commentaire" type="text"> value=<?php echo $tache[0]['commentaire']?> </textarea>
+  </div>
 
-  <button class="btn btn-primary btn-lg btn-block">MODIFIER LES TACHES</button> 
+  
+  <button class="btn btn-primary btn-lg btn-block">Valider Nouvelle tâche</button> 
 </form>
 </div>
 </div>

@@ -46,6 +46,12 @@ class Taches extends Controller
 
             $model =  new TacheM();
 
+            $mesClients = new  ClientM();
+            $data['clients'] = $mesClients->getAllClient();
+    
+            $mesStatut = new  StatutM();
+            $data['statuts'] = $mesStatut->getAllStatut();
+
             $result= $model->where('id',$idTache)->findAll();
 
             if (count($result)>0) {

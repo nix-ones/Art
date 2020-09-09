@@ -31,7 +31,7 @@
       <input type="text" name="telephone" class="form-control" placeholder="Télephone"  value="<?php echo $client[0]['telephone']?>">
     </div>
     <div class="col-md-6 mb-3">
-      <select class="form-control" name="sexe"  value="<?php echo $client[0]['sexe']?>">
+      <select class="form-control" name="sexe"  value="<?php echo $client[0]['idSexe']?>">
          <option value="Homme">Homme</option>
          <option value="Femme">Femme</option>
       
@@ -54,11 +54,11 @@
   <div class="form-row">
     <div class="col-md-6 mb-3">
       <label for="validationDefault01"></label>
-      <input type="text" name="ville" class="form-control" placeholder="Ville"  value="<?php echo $client[0]['ville']?>" required>
+      <input type="text" name="ville" class="form-control" placeholder="Ville"  value="<?php echo $client[0]['idCity']?>" required>
     </div>
     <div class="col-md-6 mb-3">
       <label for="validationDefault02"></label>
-      <select class="form-control" placeholder="Ville" name="langue" placeholder="langue"  value="<?php echo $client[0]['langue']?>" required>
+      <select class="form-control" placeholder="Ville" name="langue" placeholder="langue"  value="<?php echo $client[0]['idLangue']?>" required>
          <option value="Néerlandais">Néerlandais</option>
          <option value="Français">Français</option>
          <option value="Allemand">Allemand</option>
