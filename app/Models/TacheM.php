@@ -14,14 +14,18 @@ class TacheM extends Model
     protected $table='taches';
     protected $primaryKey='id';
     protected $returnType='array';
-    protected $allowedFields=['idclient ','description','date','dure','statut','commentaire','prix'];
+    protected $allowedFields=['idclient ','description','titre','debut','fin','idStatut','commentaire','prix'];
 
     public function getAllTache()
     {
-        $query = $this->db->query('SELECT s.nom,ta.* from clients AS s 
-        JOIN taches AS ta ON ta.idclient = s.id');
+        $query = $this->db->query('SELECT m.nom_status, cl.nom, s.* from taches AS s 
+        JOIN clients AS cl ON s.idclient = cl.id
+        JOIN statut AS m ON s.idStatut = m.id');        
         return $query->getResult(); 
-    }   
+    }
+    
+    
+    
     public  function get_taches($data)
     {
         $query = $this->db->table($this->table)->getWhere($data);

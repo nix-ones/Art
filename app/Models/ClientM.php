@@ -29,18 +29,7 @@ class ClientM extends Model
         JOIN city AS c ON cl.idCity = c.id');
         return $query->getResult();
     }
-    function get_album_data($id) {
-
-        $this->db->select ( 'sexe.genre,city.ville, langue.lang_name,clients.*' ); 
-        $this->db->from ( 'sexe' );
-        $this->db->join ( 'clients', 'clients.idSexe = sexe.id' , 'left' );
-        $this->db->join ( 'langue', 'clients.idLangue = langue.id' , 'left' );
-        $this->db->join ( 'city', 'clients.idCity = city.id' , 'left' );
-        $this->db->where ( 'clients.id', $id);
-        $query = $this->db->get ();
-
-        return $query->getResult();
-    }
+ 
     public function getAllClientsById($id)
     {
         $query = $this->db->query('SELECT s.genre,c.ville, l.lang_name,cl.* from sexe AS s  
@@ -62,9 +51,12 @@ class ClientM extends Model
     }
 
     public function getAllClientByUsers() {
-        $query = $this->db->query('SELECT cl.* FROM `clients` AS cl 
+        $query = $this->db->query('SELECT s.genre,c.ville, l.lang_name, cl.* FROM `clients` AS cl 
          JOIN `tempo` AS t ON cl.id = t.client_id
-         JOIN `users` AS user ON t.urser_id = user.id');
+         JOIN `users` AS user ON t.urser_id = user.id
+         JOIN city AS c ON cl.idCity=c.id
+         JOIN sexe AS s ON cl.idSexe=s.id
+         JOIN langue AS l ON cl.idLangue=l.id');
         return $query->getResult(); 
     }
     
